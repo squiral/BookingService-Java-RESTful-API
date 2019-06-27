@@ -24,22 +24,21 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     BookingRepository bookingRepository;
 
-    public DataLoader(){
-    }
+    public DataLoader(){}
 
     public void run(ApplicationArguments args) {
         Course course1 = new Course("JavaScript", "North Berwick", 4);
-        Course course2 = new Course("JavaScript", "North Berwick", 4);
+        Course course2 = new Course("Java", "Gullane", 3);
         courseRepository.save(course1);
         courseRepository.save(course2);
 
         Customer customer1 = new Customer("Sarah", "North Berwick", 25);
-        Customer customer2 = new Customer("Sarah", "North Berwick", 25);
+        Customer customer2 = new Customer("Kirsty", "North Berwick", 32);
         customerRepository.save(customer1);
         customerRepository.save(customer2);
 
         Booking booking1 = new Booking("07-10-2018", course1, customer1);
-        Booking booking2 = new Booking("07-10-2018", course2, customer2);
+        Booking booking2 = new Booking("15-06-2018", course2, customer2);
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
 
