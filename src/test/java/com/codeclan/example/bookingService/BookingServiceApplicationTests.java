@@ -71,4 +71,10 @@ public class BookingServiceApplicationTests {
 		assertEquals(2, found.size());
 	}
 
+	@Test
+	public void canGetAllBookingsForDate() {
+		List<Booking> found = bookingRepository.getAllBookingsOnDate("15-06-2018");
+		assertEquals(2, found.size());
+	}
+
 }
