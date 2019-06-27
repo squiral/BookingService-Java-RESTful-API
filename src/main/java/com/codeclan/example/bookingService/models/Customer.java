@@ -14,6 +14,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -26,20 +27,8 @@ public class Customer {
     private int age;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "bookings",
-            joinColumns = { @JoinColumn(
-                    name = "customer_id",
-                    nullable = false,
-                    updatable = false)
-            },
-            inverseJoinColumns = { @JoinColumn(
-                    name = "course_id",
-                    nullable = false,
-                    updatable = false)
-            })
-    private List<Course> courses;
+    @OneToMany(mappedBy = "customer")
+    private List<Booking> bookings;
 
     public Customer(){
 
@@ -49,7 +38,7 @@ public class Customer {
         this.name = name;
         this.town = town;
         this.age = age;
-        this.courses = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     public Long getId() {
@@ -84,11 +73,11 @@ public class Customer {
         this.age = age;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
