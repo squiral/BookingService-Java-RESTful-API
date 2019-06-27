@@ -42,13 +42,13 @@ public class BookingServiceApplicationTests {
 	@Test
 	public void canGetAllCustomers(){
 		List<Customer> found = customerRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(3, found.size());
 	}
 
 	@Test
 	public void canGetAllBookings(){
 		List<Booking> found = bookingRepository.findAll();
-		assertEquals(2, found.size());
+		assertEquals(4, found.size());
 	}
 
 	@Test
@@ -57,6 +57,18 @@ public class BookingServiceApplicationTests {
 		assertEquals(1, found.size());
 		assertEquals("JavaScript", found.get(0).getName());
 
+	}
+
+	@Test
+	public void canFindCustomersByCourse() {
+		List<Customer> found = customerRepository.getAllCustomersForCourse(1L);
+		assertEquals(2, found.size());
+	}
+
+	@Test
+	public void canGetAllCoursesForCustomer() {
+		List<Course> found = courseRepository.getAllCoursesForCustomer(3L);
+		assertEquals(2, found.size());
 	}
 
 }

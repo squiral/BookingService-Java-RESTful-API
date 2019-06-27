@@ -8,4 +8,6 @@ public interface CourseRepositoryCustom {
 
     List<Course> getCoursesForRating(int rating);
 
+    List<Course> getAllCoursesForCustomer(Long id);
+
 }

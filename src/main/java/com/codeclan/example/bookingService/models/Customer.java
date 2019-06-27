@@ -27,8 +27,18 @@ public class Customer {
     private int age;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
+
+    @ManyToMany
+    @JoinTable(
+            name ="bookings",
+            joinColumns = {
+
+                    @JoinColumn(name = "customer_id")},
+                    inverseJoinColumns = {@JoinColumn(name = "course_id")}
+    )
+    private List<Course> courses;
 
     public Customer(){
 
